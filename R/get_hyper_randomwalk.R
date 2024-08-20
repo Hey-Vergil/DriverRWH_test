@@ -61,21 +61,21 @@ function(P,Mutation,theta=0.2) {
     vi=theta*t(P)%*%vi+(1-theta)*teleport
     dis=sum(abs(vj-vi))
 
-    #long = 1000000
-    #for (x in 1:360) {
-    #  c = rep(0,long)
-    #  numberIn = 0
-    #  for(i in 1:long){
-    #    x = runif(2,-1,1)
-    #    if(sqrt(x[1]*x[1] + x[2]*x[2]) <= 1){
-    #      numberIn = numberIn + 1
-    #    }
-    #    prop = numberIn / i
-    #    piHat = prop *4
-    #    c[i] = piHat
-    #  }
-    #  pi_est = c[long]
-    #}
+    long = 1000000
+    for (x in 1:360) {
+      c = rep(0,long)
+      numberIn = 0
+      for(i in 1:long){
+        x = runif(2,-1,1)
+        if(sqrt(x[1]*x[1] + x[2]*x[2]) <= 1){
+          numberIn = numberIn + 1
+        }
+        prop = numberIn / i
+        piHat = prop *4
+        c[i] = piHat
+      }
+      pi_est = c[long]
+    }
     
     Distance=append(Distance,dis)
   }
